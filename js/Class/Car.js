@@ -235,10 +235,10 @@ class Car {
     /**
      * Déplace la voiture
      * @param {number} distance
-     * @param {number} meanSpeed
+     * @param {number} averageSpeed
      */
-    move(distance, meanSpeed) {
-        let consumption = this.consumptionTotal(distance, meanSpeed);
+    move(distance, averageSpeed) {
+        let consumption = this.consumptionTotal(distance, averageSpeed);
         if (this.getLevelFuel() >= consumption) {
             this.setLevelFuel(this.getLevelFuel() - consumption);
             this.setMsg(this.getMsg() + "En vous déplaçant, vous avez consommé : " + consumption + " litres d'essence.\n" + "Il reste " + this.getLevelFuel() + " litres dans votre réservoir.\n");
@@ -266,17 +266,17 @@ class Car {
     /**
      * Calcule la consommation totale d'un trajet
      * @param distance - La distance parcouru en Km
-     * @param meanSpeed - La vitesse moyenne en Km / Heures
+     * @param averageSpeed - La vitesse moyenne en Km / Heures
      * Retourne la valeur de cette consommation
      * @return {number}
      */
-    consumptionTotal(distance, meanSpeed) {
+    consumptionTotal(distance, averageSpeed) {
         let consumptionPer100Km;
-        if (meanSpeed < 50) {
+        if (averageSpeed < 50) {
             consumptionPer100Km = 10;
-        } else if (meanSpeed >= 50 && meanSpeed < 90) {
+        } else if (averageSpeed >= 50 && averageSpeed < 90) {
             consumptionPer100Km = 5;
-        } else if (meanSpeed >= 90 && meanSpeed < 130) {
+        } else if (averageSpeed >= 90 && averageSpeed < 130) {
             consumptionPer100Km = 8;
         } else {
             consumptionPer100Km = 12;
